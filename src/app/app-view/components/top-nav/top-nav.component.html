@@ -1,1 +1,11 @@
-<p>top-nav works!</p>
+<div class="container">
+    <mat-form-field appearance="fill">
+        <mat-label>Choose Location</mat-label>
+        <mat-select>
+            <mat-option>--- Clear ---</mat-option>
+            <mat-option *ngFor="let item of locations; let i = index" value="option1" value="item">
+                {{item | titlecase}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>

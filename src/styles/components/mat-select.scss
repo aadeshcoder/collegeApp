@@ -1,0 +1,12 @@
+// @use '@angular/material/_theming' as mat;
+@use '@angular/material' as mat;
+
+@mixin app-select-theme() {
+    .mat-mdc-form-field-subscript-wrapper {
+        display: none;
+    }
+
+    .mdc-text-field {
+        border-radius: 3px !important;
+    }
+}

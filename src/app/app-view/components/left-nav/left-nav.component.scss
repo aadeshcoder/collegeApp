@@ -1,5 +1,6 @@
 .container {
-    width: 233px;
+    // width: 233px;
+    width: 18vw;
     background-color: #135bdea3;
     height: 88vh;
     box-sizing: border-box;
@@ -22,9 +23,14 @@
                 background-color: #ffffff4d;
         }
 
-        a:active {
+        .active {
             border-right: 5px solid #6896ea;
             background: white;
+        }
+
+        .active:hover {
+            background-color: white;
+            cursor: default;
         }
     }
 }

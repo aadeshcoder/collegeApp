@@ -1,0 +1,49 @@
+    <div class="top-detail-container">
+        <div class="detail-page">
+            <div class="info-name">
+                <small for="name">Name : </small>
+                <span>{{ student.name | titlecase }}</span>
+            </div>
+            <div class="info-id detail-item">
+                <small for="name">Id : </small>
+                <span>{{ student.id }}</span>
+            </div>
+            <div class="info-sem detail-item">
+                <small for="name">Semister : </small>
+                <span>{{ student.semister }}</span>
+            </div>
+            <div class="info-dept detail-item">
+                <small for="name">Department : </small>
+                <span>{{ student.department | titlecase }}</span>
+            </div>
+            <div class="info-grades detail-item">
+                <small for="name">Grades : </small>
+                <span>{{ student.grades }}</span>
+            </div>
+            <div class="info-hod detail-item">
+                <small for="name">HOD : </small>
+                <span>{{ student.head_of_department | titlecase }}</span>
+            </div>
+            <div class="info-doj detail-item">
+                <small for="name">DOJ : </small>
+                <span>{{ student.date_of_join | date}}</span>
+            </div>
+            <div class="info-dob detail-item">
+                <small for="name">DOB : </small>
+                <span>{{ student.date_of_birth | date }}</span>
+            </div>
+            <div class="info-dob detail-item">
+                <small for="name">Leaves : </small>
+                <span>{{ student.leaves }}</span>
+            </div>
+        </div>
+        <div class="edit">
+            <a mat-raised-button color="accent" (click)="openEditDialog()">Edit</a>
+        </div>
+    </div>
+    <div class="bottom-detail-container">
+        <span>Leaves Table</span>
+        <div class="leave-table">
+            <app-table [data]="student.leaves_taken" [tableHeadings] = "leavesTableHeadings" [tableColumns] = "leavesTableColumns"></app-table>
+        </div>
+    </div>

@@ -1,39 +1,25 @@
-export const locationList: string[] = [
-    "Ahmednagar",
-    "Akola",
-    "Amravati",
-    "Aurangabad",
-    "Beed",
-    "Bhandara",
-    "Buldhana",
-    "Chandrapur",
-    "Dhule",
-    "Gadchiroli",
-    "Gondia",
-    "Hingoli",
-    "Jalgaon",
-    "Jalna",
-    "Kolhapur",
-    "Latur",
-    "Mumbai",
-    "Bandra",
-    "Nagpur",
-    "Nanded",
-    "Nandurbar",
-    "Nashik",
-    "Osmanabad",
-    "Palghar",
-    "Parbhani",
-    "Pune",
-    "Raigad",
-    "Alibag",
-    "Ratnagiri",
-    "Sangli",
-    "Satara",
-    "Sindhudurg",
-    "Solapur",
-    "Thane",
-    "Wardha",
-    "Washim",
-    "Yavatmal"
-]
+// export interface TakenLeaves {
+//     "start date": string,
+//     "end date": string,
+//     "reason": string,
+//     "type of leave": string,
+// }
+
+// export interface StudentList {
+//     id?:number
+//     sId: string;
+//     name: string;
+//     department: string;
+//     head_of_department: string;
+//     leaves: number;
+//     date_of_join: string;
+//     date_of_birth: string;
+//     grades: string;
+//     semister: string;
+//     leavesTaken: TakenLeaves[];
+// }
+
+// export interface UpdatedLocationList {
+//     id?: number;
+//     name: string;
+// }

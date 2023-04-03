@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppRoutes } from 'src/app/core/models/global.model';
 
 @Component({
   selector: 'app-left-nav',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./left-nav.component.scss']
 })
 export class LeftNavComponent {
-
+  routes = AppRoutes;
 }

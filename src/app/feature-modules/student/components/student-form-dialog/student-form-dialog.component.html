@@ -1,0 +1,162 @@
+<div class="container">
+    <div class="header">
+        <span *ngIf="data; else default">{{ data?.title }}</span>
+        <ng-template #default>
+            <span>Student Form</span>
+        </ng-template>
+    </div>
+    <div class="main">
+
+        <!-- now making for add form-->
+        <form [formGroup]="addStudentForm">
+            <div class="form-container">
+                <!-- name -->
+                <div class="form-item">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Name</mat-label>
+                        <input type="text" matInput formControlName="name" />
+                    </mat-form-field>
+                    <mat-error
+                        [class.hideErrors]="addStudentForm.get('name')?.valid || addStudentForm.get('name')?.untouched"
+                    >
+                        <small *ngIf="addStudentForm.get('name')?.hasError('required')"> Please enter the name</small>
+                        <small *ngIf="addStudentForm.get('name')?.hasError('pattern')">
+                            Please don't include numbers and special characters.</small
+                        >
+                    </mat-error>
+                </div>
+
+                <!-- date of birth -->
+                <div class="form-item">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Choose date of birth</mat-label>
+                        <input matInput [matDatepicker]="dateOfBirth" formControlName="date_of_birth" />
+                        <mat-datepicker-toggle matIconSuffix [for]="dateOfBirth"></mat-datepicker-toggle>
+                        <mat-datepicker #dateOfBirth>
+                            <mat-datepicker-actions>
+                                <button mat-button matDatepickerCancel>Cancel</button>
+                                <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                            </mat-datepicker-actions>
+                        </mat-datepicker>
+                    </mat-form-field>
+                    <mat-error
+                        [class.hideErrors]="
+                            addStudentForm.get('date_of_birth')?.valid || addStudentForm.get('date_of_birth')?.untouched
+                        "
+                    >
+                        <small> Please enter date of birth</small>
+                    </mat-error>
+                </div>
+
+                <!-- Dept -->
+                <div class="form-item">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Department</mat-label>
+                        <mat-select formControlName="department">
+                            <mat-option *ngFor="let dept of deptList" [value]="dept" (click)="setHeadOfDept(dept)">
+                                {{ dept }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-error
+                        [class.hideErrors]="
+                            addStudentForm.get('department')?.valid || addStudentForm.get('department')?.untouched
+                        "
+                    >
+                        <small> Please select the Department</small>
+                    </mat-error>
+                </div>
+
+                <!-- Hod Dept vise -->
+                <div class="form-item">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Head of Department</mat-label>
+                        <input type="text" matInput readonly="true" value="" formControlName="head_of_department" />
+                    </mat-form-field>
+                    <small>Choose department to fill this item</small>
+                </div>
+
+                <!-- Semister -->
+                <div class="form-item">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Semister</mat-label>
+                        <mat-select formControlName="semister">
+                            <mat-option *ngFor="let semister of semistersList" [value]="semister">
+                                {{ semister }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-error
+                        [class.hideErrors]="
+                            addStudentForm.get('semister')?.valid || addStudentForm.get('semister')?.untouched
+                        "
+                    >
+                        <small> Please select the Semister</small>
+                    </mat-error>
+                </div>
+
+                <!-- Grades -->
+                <div class="form-item">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Grade</mat-label>
+                        <mat-select formControlName="grade">
+                            <mat-option *ngFor="let grade of gradeList" [value]="grade"> {{ grade }} </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-error
+                        [class.hideErrors]="
+                            addStudentForm.get('grade')?.valid || addStudentForm.get('grade')?.untouched
+                        "
+                    >
+                        <small> Please select the Grade</small>
+                    </mat-error>
+                </div>
+
+                <!-- Date of join -->
+                <div class="form-item">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Choose date of join</mat-label>
+                        <input matInput [matDatepicker]="dateOfJoin" formControlName="date_of_join" />
+                        <mat-datepicker-toggle matIconSuffix [for]="dateOfJoin"></mat-datepicker-toggle>
+                        <mat-datepicker #dateOfJoin>
+                            <mat-datepicker-actions>
+                                <button mat-button matDatepickerCancel>Cancel</button>
+                                <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                            </mat-datepicker-actions>
+                        </mat-datepicker>
+                    </mat-form-field>
+                    <mat-error
+                        [class.hideErrors]="
+                            addStudentForm.get('date_of_join')?.valid || addStudentForm.get('date_of_join')?.untouched
+                        "
+                    >
+                        <small *ngIf="addStudentForm.get('date_of_join')?.hasError('required')">
+                            Please enter date of join</small
+                        >
+                    </mat-error>
+                    <mat-error
+                        [class.hideErrors]="addStudentForm.valid || addStudentForm.get('date_of_join')?.untouched"
+                    >
+                        <small *ngIf="addStudentForm.hasError('invalidDate')">
+                            Date of Join cannot be before Date of Birth.</small
+                        >
+                    </mat-error>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="actions">
+        <mat-dialog-actions align="end">
+            <a mat-raised-button mat-dialog-close="true">Cancel</a>
+            <a
+                mat-raised-button
+                [mat-dialog-close]="true"
+                cdkFocusInitial
+                (click)="onSubmit()"
+                [disabled]="addStudentForm.invalid"
+                color="primary"
+                >Save</a
+            >
+        </mat-dialog-actions>
+    </div>
+</div>

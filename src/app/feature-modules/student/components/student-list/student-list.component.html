@@ -1,3 +1,60 @@
 <div class="container">
-    Student List works!
+    <div class="menus">
+        <a mat-raised-button color="primary" (click)="openAddStudentDialog()">Add Student</a>
+    </div>
+    <div class="main">
+        <div class="list-container">
+            <div class="searchbox">
+                <mat-form-field class="example-full-width">
+                    <input matInput type="search" placeholder="Search by Name or Id" [(ngModel)]="searchText" />
+                </mat-form-field>
+            </div>
+
+            <!-- student list  -->
+            <div class="list" *ngIf="studentList && studentList.length > 0; else noStudentList">
+                <div
+                    class="item"
+                    *ngFor="
+                        let item of studentList | searchFilter : searchText : 'id' : 'department' : 'name';
+                        let ind = index
+                    "
+                    [class.activated-item]="item === selectedStudent"
+                    (click)="handleStudentSelect(item)"
+                >
+                    <div class="name">
+                        <small for="name">Name : </small>
+                        <span id="name">{{ item?.name | titlecase }}</span>
+                    </div>
+                    <div class="id">
+                        <small for="id">id : </small>
+                        <span id="id">{{ item?.id }}</span>
+                    </div>
+                    <div class="dept">
+                        <small for="department">Dept. : </small>
+                        <span id="department">{{ item?.department! | acronym }}</span>
+                    </div>
+                </div>
+            </div>
+            <ng-template #noStudentList>
+                <div style="margin-top: 10px">
+                    <span>No Student Available.</span>
+                </div>
+            </ng-template>
+            <!-- END student-list -->
+        </div>
+
+        <div class="student_detail_container" *ngIf="selectedStudent; else noStudentSelected">
+            <app-student-details
+                [student]="selectedStudent"
+                [leavesTableHeadings]="displayedColumns"
+                [leavesTableColumns] = "tableColumns"
+                (studentDataEmitter)="getEditStudentData($event)"
+            ></app-student-details>
+        </div>
+        <ng-template #noStudentSelected>
+            <div class="noStudentSelected">
+                <span>Please Select a Student from List</span>
+            </div>
+        </ng-template>
+    </div>
 </div>

@@ -1,0 +1,47 @@
+.container {
+    width: 70vw;
+    height: 90vh;
+    color: white;
+    .header {
+        box-sizing: border-box;
+        background-color: #448aff;
+        height: 10vh;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+    }
+
+    .main {
+        box-sizing: border-box;
+        color: black;
+        height: 70vh;
+        padding: 20px;
+        overflow-y: auto;
+
+        .form-container {
+            display: grid;
+            grid-template-columns: repeat(2, 400px);
+            gap: 20px;
+            justify-content: space-around;
+
+            .form-item {
+                mat-form-field {
+                    width: 100%;
+                }
+
+                .hideErrors {
+                    visibility: hidden;
+                }
+            }
+        }
+    }
+
+    .actions {
+        height: 10vh;
+
+        .save-btn {
+            background-color: #448aff;
+            color: white;
+        }
+    }
+}

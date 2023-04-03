@@ -1,0 +1,92 @@
+{
+  "updatedLocationList": [
+    {
+      "id": 1,
+      "name": "sindhudurga"
+    },
+    {
+      "id": 2,
+      "name": "ratnagiri"
+    },
+    {
+      "id": 3,
+      "name": "jalgaon"
+    },
+    {
+      "id": 4,
+      "name": "akola"
+    },
+    {
+      "id": 5,
+      "name": "amravati"
+    },
+    {
+      "id": 6,
+      "name": "ahmednagar"
+    }
+  ],
+  "ratnagiri": [
+    {
+      "id": 1,
+      "name": "rajesh bhojane",
+      "department": "information technology",
+      "head_of_department": "Mr. Dattaram Patil",
+      "leaves": 12,
+      "date_of_join": "2021-01-01",
+      "date_of_birth": "1999-01-01",
+      "grades": "A",
+      "semister": "6",
+      "leaves_taken": [
+        {
+          "start_date": "2021-05-08",
+          "end_date": "2021-05-08",
+          "reason": "not feeling well",
+          "type_of_leave": "privilege leave"
+        }
+      ]
+    }
+  ],
+  "sindhudurga": [
+    {
+      "name": "Narendra Modi",
+      "department": "Information Technology",
+      "head_of_department": "Mr. Ramnath Govind",
+      "leaves": 12,
+      "date_of_join": "2023-03-01T18:30:00.000Z",
+      "date_of_birth": "1992-04-03T18:30:00.000Z",
+      "grades": "O",
+      "semister": "2nd",
+      "leavesTaken": [],
+      "id": 2
+    },
+    {
+      "name": "Anuraj Sawant",
+      "department": "Computer Science",
+      "head_of_department": "Mr. Rajesh Tope",
+      "leaves": 12,
+      "date_of_join": "2/6/2023",
+      "date_of_birth": "4/5/2000",
+      "grades": "O",
+      "semister": "2nd",
+      "leavesTaken": [],
+      "id": 3
+    },
+    {
+      "name": "Shubhankar Thakur",
+      "department": "Computer Science",
+      "head_of_department": "Mr. Rajesh Tope",
+      "leaves": 12,
+      "date_of_join": "2/14/2023",
+      "date_of_birth": "1/27/2000",
+      "grades": "O",
+      "semister": "1st",
+      "leavesTaken": [],
+      "id": 4
+    }
+  ],
+  "jalgaon": [],
+  "akola": [],
+  "amravati": [],
+  "ahmednagar": [],
+  "allStudent": []
+}

@@ -1,0 +1,32 @@
+<div class="container">
+    <table>
+        <thead>
+            <th *ngFor="let column of columnsToDisplay">
+                {{ column | titlecase}}
+            </th>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let item of data; let i = index">
+                <tr *ngIf="showByDepartment === true">
+                    <td class="dept-name-container">
+                        <mat-icon (click)="handleExpandCollpse(item)">
+                        {{
+                            item.expanded ? 'expand_more' : 'chevron_right'
+                        }}
+                    </mat-icon>
+                        <span (dblclick)="openDeptDetails()">{{ item.department | titlecase }}</span>
+                    </td>
+                </tr>
+                <ng-container *ngFor="let faculty of item.faculties">
+                    <tr [class.hide-faculties]="item.expanded === false && showByDepartment">
+                        <td class="faculty-info">{{ faculty.name }}</td>
+                        <td class="faculty-info">{{ faculty.designation }}</td>
+                        <td class="faculty-info">{{ faculty.date_of_join }}</td>
+                        <td class="faculty-info">{{ faculty.experience }}</td>
+                        <td class="faculty-info">{{ faculty.subject }}</td>
+                    </tr>
+                </ng-container>
+            </ng-container>
+        </tbody>
+    </table>
+</div>

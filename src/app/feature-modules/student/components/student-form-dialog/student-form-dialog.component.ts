@@ -2,6 +2,8 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { departmentHodMap, semisters, grades } from "../../models/formOptions.model"
+import { IDummyLocation } from 'src/app/core/models/global.model';
+import { HttpService } from 'src/app/core/services/http.service';
 
 @Component({
   selector: 'app-student-form-dialog',
@@ -14,11 +16,13 @@ export class StudentFormDialogComponent implements OnInit {
   deptList: string[];
   semistersList: string[];
   gradeList: string[];
+  locationList:IDummyLocation[];
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public fb: FormBuilder,
-    public dialogRef:MatDialogRef<StudentFormDialogComponent>
+    public dialogRef:MatDialogRef<StudentFormDialogComponent>,
+    public httpService:HttpService
   ) { }
 
   // form for add student
@@ -30,9 +34,11 @@ export class StudentFormDialogComponent implements OnInit {
     semister: ['', [Validators.required]],
     grade: ['', [Validators.required]],
     date_of_join: ['', [Validators.required]],
+    location_id:['',[Validators.required]]
   }, { validator: dateValidator })
 
   ngOnInit(): void {
+    this.getLocations();
     this.deptWithHodList = departmentHodMap;
     this.semistersList = semisters;
     this.gradeList = grades;
@@ -40,7 +46,11 @@ export class StudentFormDialogComponent implements OnInit {
     if(this.data.operation === 'edit') {
       this.loadData()
     }
-    console.log(this.data);
+  }
+
+  // getting location list
+  getLocations() {
+    this.httpService.getLocation().subscribe((locations) => this.locationList = locations);
   }
 
   // method to set the values in the fields
@@ -53,9 +63,11 @@ export class StudentFormDialogComponent implements OnInit {
       head_of_department: this.data.selectedStudentData.head_of_department,
       date_of_join: new Date(this.data.selectedStudentData.date_of_join),
       date_of_birth: new Date(this.data.selectedStudentData.date_of_birth),
+      location_id: this.data.selectedStudentData.dummyLocationId,
     })
   }
 
+  // setting HOD by the value of department
   setHeadOfDept(deptName: string): void {
     const hodName = this.deptWithHodList[deptName];
     this.addStudentForm.patchValue({
@@ -64,21 +76,17 @@ export class StudentFormDialogComponent implements OnInit {
   }
 
   onSubmit() {
-    // const dateOfJoin = new Date(this.addStudentForm.value.date_of_join!)
-    // const dateOfBirth = new Date(this.addStudentForm.value.date_of_birth!);
-
     const newStudent = {
       name: this.addStudentForm.value.name!,
       department: this.addStudentForm.value.department!,
       head_of_department: this.addStudentForm.value.head_of_department!,
       leaves: 12,
-      // date_of_join: dateOfJoin.toLocaleDateString(),
-      // date_of_birth: dateOfBirth.toLocaleDateString(),
       date_of_join: this.addStudentForm.value.date_of_join,
       date_of_birth: this.addStudentForm.value.date_of_birth,
       grades: this.addStudentForm.value.grade!,
       semister: this.addStudentForm.value.semister!,
       leavesTaken: [],
+      dummyLocationId:this.addStudentForm.value.location_id!
     }
 
     this.dialogRef.close({

@@ -6,13 +6,13 @@ import { Observable, BehaviorSubject} from 'rxjs';
 })
 
 export class LocationSelectionService {
-  public selectedLocation = new BehaviorSubject<string>('all'); //TODO: name
+  public selectedLocation = new BehaviorSubject<number>(-1); //TODO: name
 
-  setSelectedLocation(value: string) {//TODO: name
+  setSelectedLocation(value: number) {//TODO: name
     this.selectedLocation.next(value);
   }
 
-  getSelectedLocation(): Observable<string> { //TODO: name
+  getSelectedLocation(): Observable<number> { //TODO: name
     return this.selectedLocation.asObservable();
   }
 

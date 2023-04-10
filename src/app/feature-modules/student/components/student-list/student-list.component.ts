@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { IStudentList, ITakenLeaves } from 'src/app/core/models/global.model';
+import { IDummyStudent, IStudentList, ITakenLeaves } from 'src/app/core/models/global.model';
 import { LocationSelectionService } from 'src/app/app-view/services/location-selection.service';
 import { HttpService } from 'src/app/core/services/http.service';
 import { MatDialog } from "@angular/material/dialog"
@@ -14,15 +14,13 @@ import { StudentFormDialogComponent } from '../student-form-dialog/student-form-
 
 export class StudentListComponent implements OnInit, OnDestroy {
 
-  SELECT_LOCATION_ALL: string = "all";
-  STUDENT_ADD_ID: number = 300;
-  selectedLocation: string;
-  studentList: IStudentList[];
+  selectedLocationId: number;
+  studentList: IDummyStudent[];
   searchText: string = '';
-  selectedStudent: IStudentList;
+  selectedStudent: IDummyStudent;
   locationSubscription: Subscription;
   displayedColumns: string[] = [];
-  tableColumns:string[] = [];
+  tableColumns: string[] = [];
 
   constructor(
     private dataService: LocationSelectionService,
@@ -31,18 +29,17 @@ export class StudentListComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+
     this.locationSubscription = this.dataService.getSelectedLocation().subscribe((value) => {
-      this.selectedLocation = value;
-      // if "all" option selected
-      if (this.selectedLocation.toLocaleLowerCase() === this.SELECT_LOCATION_ALL) {
+      this.selectedLocationId = value;
+      if(this.selectedLocationId === -1) {
+        // loading all location students
         this.httpService.getAllStudents().subscribe((res) => {
           this.studentList = res;
         });
-        return;
-      }
-      else {
-        // loading individual location
-        this.httpService.getStudents(this.selectedLocation).subscribe((res) => {
+      } else {
+        // loading individual location students
+        this.httpService.getStudentsByLocation(this.selectedLocationId).subscribe((res) => {
           this.studentList = res;
         });
       }
@@ -56,7 +53,7 @@ export class StudentListComponent implements OnInit, OnDestroy {
   /*
   ** Storing the select item from the list
   */
-  handleStudentSelect(item: IStudentList) {
+  handleStudentSelect(item: IDummyStudent) {
     if (item) {
       this.selectedStudent = item;
       this.generateColumns(this.selectedStudent.leaves_taken);
@@ -71,7 +68,7 @@ export class StudentListComponent implements OnInit, OnDestroy {
       const obj = values?.[0]
       let columns: string[] = obj ? Object.keys(obj) : [];
       this.tableColumns = columns;
-      for(let columnName of columns) {
+      for (let columnName of columns) {
         this.displayedColumns.push(columnName.split('_').join(' '))
       }
     }
@@ -80,8 +77,8 @@ export class StudentListComponent implements OnInit, OnDestroy {
   /*
   ** Method for add student
   */
-  addStudent(newStudentData: IStudentList) {
-    this.httpService.addStudent(newStudentData, this.selectedLocation).subscribe((result) => {
+  addStudent(newStudentData: IDummyStudent) {
+    this.httpService.addStudent(newStudentData, this.selectedLocationId).subscribe((result) => {
       this.studentList.push(result);
     })
   }
@@ -89,8 +86,8 @@ export class StudentListComponent implements OnInit, OnDestroy {
   /*
   ** Mehod to edit student
   */
-  updateStudent(updatedStudentData: IStudentList) {
-    this.httpService.updateStudent(updatedStudentData, this.selectedLocation).subscribe((result) => {
+  updateStudent(updatedStudentData: IDummyStudent) {
+    this.httpService.updateStudent(updatedStudentData, this.selectedStudent.id).subscribe((result) => {
       this.studentList = this.studentList.map((student) => {
         if (student.id === result.id) {
           student = updatedStudentData;
@@ -101,54 +98,20 @@ export class StudentListComponent implements OnInit, OnDestroy {
     });
   }
 
-  getEditStudentData(editStudent: IStudentList) {
-    console.log(editStudent);
+  getEditStudentData(editStudent: IDummyStudent) {
     this.updateStudent(editStudent);
-  }
-
-  /*
-  ** Open Edit dialog 
-  */
-  openEditDialog() {
-    // Don't open the dialog when location is 'all'
-    if (this.selectedLocation === this.SELECT_LOCATION_ALL) {
-      alert("Please choose specific location first.");
-      return;
-    }
-
-    const dialogRef = this.dialog.open(StudentFormDialogComponent, {
-      disableClose: true,
-      // data: this.selectedStudent
-      data: {
-        title: "Edit Student",
-        // selectedStudentData:this.selectedStudent,
-        // operation:"edit"
-      }
-    })
-
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result.studentData) {
-        console.log(result.studentData);
-        // this.updateStudent(result.studentData);
-      }
-    });
   }
 
   /*
   ** Open add student dialog
   */
   openAddStudentDialog() {
-    // Don't open the dialog when location is 'all'
-    // if (this.selectedLocation === this.SELECT_LOCATION_ALL) {
-    //   alert("Please choose specific location first.");
-    //   return;
-    // }
 
     const dialogRef = this.dialog.open(StudentFormDialogComponent, {
 
       disableClose: true,
       data: {
-        location: this.selectedLocation,
+        location: this.selectedLocationId,
         title: "Add Student",
         operation: "add"
       }
@@ -156,7 +119,6 @@ export class StudentListComponent implements OnInit, OnDestroy {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result.studentData) {
-        console.log(result.studentData);
         this.addStudent(result.studentData);
       }
     })

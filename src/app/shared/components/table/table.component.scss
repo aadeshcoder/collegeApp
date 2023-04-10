@@ -1,3 +1,13 @@
+// .mdc-data-table__table {
+    // min-width: 70%;
+// }
+
+table {
+    font-size: 0.8rem;
+    overflow: auto;
+    border: 1px solid;
+}
+
 .emptyTable {
     background: #d2dbeb;
     display: flex;

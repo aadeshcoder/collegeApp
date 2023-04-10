@@ -1,11 +1,29 @@
 .container {
+    box-sizing: border-box;
     overflow: auto;
     width: 100vw;
     height: 100vh;
-
+    
+    .header {
+        box-sizing: border-box;
+        height: 12vh;
+        width: 100vw;
+    }
+    
     .main-layout{
+        box-sizing: border-box;
         display: flex;
         width: 100vw;
         height: 88vh;
+
+        .sidebar {
+            width: 15vw;
+            height: 88vh;
+        }
+
+        .main-body {
+            width: 85vw;
+            height: 88vh;
+        }
     }
 }

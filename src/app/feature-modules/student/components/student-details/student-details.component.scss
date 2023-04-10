@@ -4,9 +4,9 @@
     margin-bottom: 20px;
 
     .detail-page {
+        box-sizing: border-box;
         display: grid;
         width: 526px;
-        box-sizing: border-box;
         grid-template-columns: auto auto;
         gap: 10px;
 
@@ -20,7 +20,14 @@
     }
 
     .edit {
+        box-sizing: border-box;
         margin: 0 auto;
+
+        a {
+            width: 64px;
+            height: 32px;
+            font-size: 0.8rem;
+        }
     }
 }
 .bottom-detail-container {

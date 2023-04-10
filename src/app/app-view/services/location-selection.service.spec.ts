@@ -16,7 +16,7 @@ describe('LocationSelectionService', () => {
 
   it("should call sendData method", () => {
     spyOn(service.selectedLocation, "next").and.callThrough();
-    const value = "sindhudurga";
+    const value = 1;
     service.setSelectedLocation(value);
     expect(service.selectedLocation.next).toHaveBeenCalledWith(value);
   })

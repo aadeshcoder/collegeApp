@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from 'src/app/core/services/http.service';
 import { LocationSelectionService } from '../../services/location-selection.service';
+import { IDummyLocation } from 'src/app/core/models/global.model';
 
 @Component({
   selector: 'app-top-nav',
@@ -8,22 +9,27 @@ import { LocationSelectionService } from '../../services/location-selection.serv
   styleUrls: ['./top-nav.component.scss']
 })
 export class TopNavComponent implements OnInit {
-  locationList: string[];
-  selectedLocation: string = 'all'
+  locationList: IDummyLocation[];
+  selectedLocationId: number = -1;
 
   constructor(public httpService: HttpService, public dataService: LocationSelectionService) { }
 
   ngOnInit(): void {
-    this.httpService.getUpdatedLocations().subscribe((list) => {
-      this.locationList = list.map((locationObj, ind) => locationObj.name);
-    });
+    // this.httpService.getUpdatedLocations().subscribe((list) => {
+    //   this.locationList = list.map((locationObj, ind) => locationObj.name);
+    // });
+
+    this.httpService.getLocation().subscribe((location) => {
+      this.locationList = location;
+    })
   }
 
   /*
   ** Passes selected location
   */
-  setLocation() {
-    this.dataService.setSelectedLocation(this.selectedLocation);
+  setLocation(locationId:number) {
+    this.dataService.setSelectedLocation(locationId);
   }
+
 
 }

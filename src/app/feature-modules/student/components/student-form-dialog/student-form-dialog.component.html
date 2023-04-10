@@ -6,7 +6,6 @@
         </ng-template>
     </div>
     <div class="main">
-
         <!-- now making for add form-->
         <form [formGroup]="addStudentForm">
             <div class="form-container">
@@ -140,6 +139,38 @@
                         <small *ngIf="addStudentForm.hasError('invalidDate')">
                             Date of Join cannot be before Date of Birth.</small
                         >
+                    </mat-error>
+                </div>
+
+                <!-- Location -->
+                <div class="form-item">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Location</mat-label>
+                        <mat-select formControlName="location_id">
+                            <ng-container *ngIf="data.operation == 'add'">
+                                <mat-option *ngFor="let location of locationList" [value]="location.id">
+                                    {{ location.name }}
+                                </mat-option>
+                            </ng-container>
+                            <ng-container *ngIf="data.operation == 'edit'">
+                                <mat-option
+                                    *ngFor="let location of locationList"
+                                    [value]="addStudentForm.get('location_id')?.value === location.id && location.id"
+                                >
+                                    {{ location.name }}
+                                </mat-option>
+                            </ng-container>
+                            <!-- <mat-option *ngFor="let location of locationList" [value]="location.id">
+                                {{ location.name }}
+                            </mat-option> -->
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-error
+                        [class.hideErrors]="
+                            addStudentForm.get('location_id')?.valid || addStudentForm.get('location_id')?.untouched
+                        "
+                    >
+                        <small> Please select the Location</small>
                     </mat-error>
                 </div>
             </div>

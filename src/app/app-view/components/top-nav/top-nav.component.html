@@ -1,14 +1,14 @@
 <div class="container">
     <mat-form-field appearance="fill">
         <mat-label>Choose Location</mat-label>
-        <mat-select value="all" [(ngModel)]="selectedLocation">
-            <mat-option value="all" (click)="setLocation()">All</mat-option>
-            <mat-option 
-                *ngFor="let location of locationList; let ind = index" 
-                [value]="location" 
-                (click)="setLocation()"
+        <mat-select value="all">
+            <mat-option value="all" (click)="setLocation(-1)">All</mat-option>
+            <mat-option
+                *ngFor="let location of locationList; let ind = index"
+                [value]="location"
+                (click)="setLocation(location.id)"
             >
-                {{ location | titlecase }}
+                {{ location.name | titlecase }}
             </mat-option>
         </mat-select>
     </mat-form-field>

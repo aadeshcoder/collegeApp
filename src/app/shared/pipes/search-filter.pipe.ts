@@ -25,6 +25,7 @@ export class SearchFilterPipe implements PipeTransform {
         if (typeof item[keyword] === 'number' && item[keyword] == searchText) {
           result.push(item);
         }
+
       }
     }
 

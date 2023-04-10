@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges,SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-table',
@@ -6,14 +6,20 @@ import { Component, Input, OnChanges,SimpleChanges } from '@angular/core';
   styleUrls: ['./table.component.scss']
 })
 
-export class TableComponent implements OnChanges {
+export class TableComponent implements OnInit, OnChanges{
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes['tableColumns'].currentValue);
+  }
+  ngOnInit(): void {
+    console.log(this.tableColumns);
+    console.log(this.data);
+  }
 
   @Input() data: any;
   @Input() tableHeadings: string[];
   @Input() tableColumns: string[];
+  @Input() columns: any;
 
-  ngOnChanges(value:SimpleChanges) {
-    console.log(value);
-  }
 }
 

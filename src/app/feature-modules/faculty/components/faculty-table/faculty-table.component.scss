@@ -1,0 +1,52 @@
+.container {
+    table {
+        border: 1px solid;
+        border-collapse: collapse;
+        width: 100%;
+        box-shadow: 1px -2px 11px 0px;
+
+        th,
+        tr {
+            border: 1px solid;
+        }
+
+        th {
+            height: 30px;
+            padding: 5px 0;
+        }
+
+        td,
+        th {
+            width: 20%;
+        }
+
+        .faculty-info {
+            text-align: center;
+            border: 1px solid;
+        }
+
+        .hide-faculties {
+            display: none;
+        }
+
+        mat-icon {
+            // background-color: gray;
+            background-color: #6896ea;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .dept-name-container {
+            display: grid;
+            grid-template-columns: 3rem 12rem;
+            place-items: center;
+            height: 33px;
+            gap: 5px;
+
+            span {
+                font-weight: bold;
+                cursor: pointer;
+            }
+        }
+    }
+}

@@ -2,7 +2,8 @@
     <div class="menus">
         <a mat-raised-button color="primary" (click)="openAddStudentDialog()">Add Student</a>
     </div>
-    <div class="main">
+<div class="main">
+
         <div class="list-container">
             <div class="searchbox">
                 <mat-form-field class="example-full-width">
@@ -36,7 +37,7 @@
                 </div>
             </div>
             <ng-template #noStudentList>
-                <div style="margin-top: 10px">
+                <div style="box-sizing: border-box ;margin-top: 10px">
                     <span>No Student Available.</span>
                 </div>
             </ng-template>
@@ -44,12 +45,14 @@
         </div>
 
         <div class="student_detail_container" *ngIf="selectedStudent; else noStudentSelected">
+            
             <app-student-details
                 [student]="selectedStudent"
                 [leavesTableHeadings]="displayedColumns"
                 [leavesTableColumns] = "tableColumns"
                 (studentDataEmitter)="getEditStudentData($event)"
             ></app-student-details>
+
         </div>
         <ng-template #noStudentSelected>
             <div class="noStudentSelected">

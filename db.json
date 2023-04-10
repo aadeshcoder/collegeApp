@@ -88,5 +88,259 @@
   "akola": [],
   "amravati": [],
   "ahmednagar": [],
-  "allStudent": []
+  "allStudent": [],
+  "dummyLocations": [
+    {
+      "id": 1,
+      "name": "Sindhudurga"
+    },
+    {
+      "id": 2,
+      "name": "Akola"
+    },
+    {
+      "id": 3,
+      "name": "Ratnagiri"
+    }
+  ],
+  "dummyStudents": [
+    {
+      "name": "Eoin Morgon",
+      "department": "Information Technology",
+      "head_of_department": "Mr. Ramnath Govind",
+      "leaves": 12,
+      "date_of_join": "2016-06-14T18:30:00.000Z",
+      "date_of_birth": "1983-01-17T18:30:00.000Z",
+      "grades": "A+",
+      "semister": "2nd",
+      "leaves_taken": [
+        {
+          "start_date": "2021-05-08",
+          "end_date": "2021-05-08",
+          "reason": "not feeling well",
+          "type_of_leave": "privilege leave"
+        },
+        {
+          "start_date": "2021-05-08",
+          "end_date": "2021-05-08",
+          "reason": "not feeling well",
+          "type_of_leave": "privilege leave"
+        },
+        {
+          "start_date": "2021-05-08",
+          "end_date": "2021-05-08",
+          "reason": "not feeling well",
+          "type_of_leave": "privilege leave"
+        }
+      ],
+      "dummyLocationId": 1,
+      "id": 1
+    },
+    {
+      "id": 2,
+      "name": "Jofra Archer",
+      "department": "Information Technology",
+      "head_of_department": "Mr. Ramnath Govind",
+      "leaves": 12,
+      "date_of_join": "2023-03-01T18:30:00.000Z",
+      "date_of_birth": "1992-04-03T18:30:00.000Z",
+      "grades": "O",
+      "semister": "2nd",
+      "leaves_taken": [],
+      "dummyLocationId": 2
+    },
+    {
+      "id": 3,
+      "name": "Jos Butler",
+      "department": "Information Technology",
+      "head_of_department": "Mr. Ramnath Govind",
+      "leaves": 12,
+      "date_of_join": "2023-03-01T18:30:00.000Z",
+      "date_of_birth": "1992-04-03T18:30:00.000Z",
+      "grades": "O",
+      "semister": "2nd",
+      "leaves_taken": [],
+      "dummyLocationId": 3
+    },
+    {
+      "name": "Tom Curran",
+      "department": "Information Technology",
+      "head_of_department": "Mr. Ramnath Govind",
+      "leaves": 12,
+      "date_of_join": "2023-03-01T18:30:00.000Z",
+      "date_of_birth": "1992-04-03T18:30:00.000Z",
+      "grades": "O",
+      "semister": "2nd",
+      "leaves_taken": [],
+      "dummyLocationId": 1,
+      "id": 4
+    },
+    {
+      "name": "Adam Markram",
+      "department": "Computer Science",
+      "head_of_department": "Mr. Rajesh Tope",
+      "leaves": 12,
+      "date_of_join": "2020-05-07T18:30:00.000Z",
+      "date_of_birth": "2000-05-07T18:30:00.000Z",
+      "grades": "A+",
+      "semister": "2nd",
+      "leavesTaken": [],
+      "dummyLocationId": 2,
+      "id": 5
+    }
+  ],
+  "dummyDepts": [
+    {
+      "id": 1,
+      "name": "Information Technology",
+      "expanded": true
+    },
+    {
+      "id": 2,
+      "name": "Computer Science",
+      "expanded": true
+    }
+  ],
+  "dummyFaculties": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "designation": "Professor",
+      "date_of_join": "01/01/2000",
+      "experience": "20 years",
+      "subject": "C++",
+      "dummyDeptId": 1,
+      "dummyLocationId": 1
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "designation": "Associate Professor",
+      "date_of_join": "01/01/2005",
+      "experience": "15 years",
+      "subject": "Android Development",
+      "dummyDeptId": 1,
+      "dummyLocationId": 2
+    },
+    {
+      "id": 3,
+      "name": "Bob Johnson",
+      "designation": "Assistant Professor",
+      "date_of_join": "01/01/2013",
+      "experience": "7 years",
+      "subject": "Micro-Architecture",
+      "dummyDeptId": 1,
+      "dummyLocationId": 1
+    },
+    {
+      "id": 4,
+      "name": "Alice Lee",
+      "designation": "Lecturer",
+      "date_of_join": "01/01/2018",
+      "experience": "2 years",
+      "subject": "Applied Maths",
+      "dummyDeptId": 2,
+      "dummyLocationId": 1
+    },
+    {
+      "id": 5,
+      "name": "Bret Lee",
+      "designation": "Assistant Professor",
+      "date_of_join": "01/01/2013",
+      "experience": "7 years",
+      "subject": "Core Java",
+      "dummyDeptId": 2,
+      "dummyLocationId": 2
+    },
+    {
+      "id": 6,
+      "name": "Marcus Stoinis",
+      "designation": "Lecturer",
+      "date_of_join": "01/01/2018",
+      "experience": "2 years",
+      "subject": "Python",
+      "dummyDeptId": 2,
+      "dummyLocationId": 2
+    },
+    {
+      "id": 7,
+      "name": "Ricky Ponting",
+      "designation": "Assistant Professor",
+      "date_of_join": "01/01/2013",
+      "experience": "7 years",
+      "subject": "Computer Networks",
+      "dummyDeptId": 2,
+      "dummyLocationId": 3
+    },
+    {
+      "id": 8,
+      "name": "Mike Hussy",
+      "designation": "Lecturer",
+      "date_of_join": "01/01/2018",
+      "experience": "2 years",
+      "subject": "Data Science",
+      "dummyDeptId": 1,
+      "dummyLocationId": 3
+    }
+  ],
+  "faculties": [
+    {
+      "name": "John Doe",
+      "designation": "Professor",
+      "date_of_join": "01/01/2000",
+      "experience": "20 years",
+      "subject": "Mathematics",
+      "expanded": false
+    },
+    {
+      "name": "Jane Smith",
+      "designation": "Associate Professor",
+      "date_of_join": "01/01/2005",
+      "experience": "15 years",
+      "subject": "Computer Science"
+    },
+    {
+      "name": "Bob Johnson",
+      "designation": "Assistant Professor",
+      "date_of_join": "01/01/2013",
+      "experience": "7 years",
+      "subject": "Physics"
+    },
+    {
+      "name": "Alice Lee",
+      "designation": "Lecturer",
+      "date_of_join": "01/01/2018",
+      "experience": "2 years",
+      "subject": "Chemistry"
+    },
+    {
+      "name": "Alice Lee",
+      "designation": "Lecturer",
+      "date_of_join": "01/01/2018",
+      "experience": "2 years",
+      "subject": "Chemistry"
+    },
+    {
+      "name": "Alice Lee",
+      "designation": "Lecturer",
+      "date_of_join": "01/01/2018",
+      "experience": "2 years",
+      "subject": "Chemistry"
+    },
+    {
+      "name": "Alice Lee",
+      "designation": "Lecturer",
+      "date_of_join": "01/01/2018",
+      "experience": "2 years",
+      "subject": "Chemistry"
+    },
+    {
+      "name": "Alice Lee",
+      "designation": "Lecturer",
+      "date_of_join": "01/01/2018",
+      "experience": "2 years",
+      "subject": "Chemistry",
+      "expanded": false
+    }
+  ]
 }

@@ -7,7 +7,7 @@ const ELEMENT_DATA: any = [
     "expanded": true,
     "faculties": [
       {
-        "id":1,
+        "id": 1,
         "name": "John Doe",
         "designation": "Professor",
         "date_of_join": "01/01/2000",
@@ -16,7 +16,7 @@ const ELEMENT_DATA: any = [
 
       },
       {
-        "id":2,
+        "id": 2,
         "name": "Jane Smith",
         "designation": "Associate Professor",
         "date_of_join": "01/01/2005",
@@ -31,7 +31,7 @@ const ELEMENT_DATA: any = [
     "expanded": true,
     "faculties": [
       {
-        "id":3,
+        "id": 3,
         "name": "Bob Johnson",
         "designation": "Assistant Professor",
         "date_of_join": "01/01/2013",
@@ -39,7 +39,7 @@ const ELEMENT_DATA: any = [
         "subject": "Physics",
       },
       {
-        "id":4,
+        "id": 4,
         "name": "Alice Lee",
         "designation": "Lecturer",
         "date_of_join": "01/01/2018",
@@ -53,7 +53,7 @@ const ELEMENT_DATA: any = [
     "expanded": true,
     "faculties": [
       {
-        "id":5,
+        "id": 5,
         "name": "Bob Johnson",
         "designation": "Assistant Professor",
         "date_of_join": "01/01/2013",
@@ -61,7 +61,7 @@ const ELEMENT_DATA: any = [
         "subject": "Physics",
       },
       {
-        "id":6,
+        "id": 6,
         "name": "Alice Lee",
         "designation": "Lecturer",
         "date_of_join": "01/01/2018",
@@ -75,7 +75,7 @@ const ELEMENT_DATA: any = [
     "expanded": true,
     "faculties": [
       {
-        "id":7,
+        "id": 7,
         "name": "Bob Johnson",
         "designation": "Assistant Professor",
         "date_of_join": "01/01/2013",
@@ -83,7 +83,7 @@ const ELEMENT_DATA: any = [
         "subject": "Physics",
       },
       {
-        "id":8,
+        "id": 8,
         "name": "Alice Lee",
         "designation": "Lecturer",
         "date_of_join": "01/01/2018",
@@ -104,14 +104,14 @@ const ELEMENT_DATA: any = [
 
 export class FacultyTableComponent {
 
-  @Input() showByDepartment:boolean;
-  @Input() data:any;
+  @Input() showByDepartment: boolean;
+  @Input() data: any;
   columnsToDisplay = ['name', 'designation', 'date of join', 'experience', "subject"];
 
-  constructor(private router:Router) {}
+  constructor(private router: Router) { }
 
   // Toggling expanded value
-  handleExpandCollpse(item:any) {
+  handleExpandCollpse(item: any) {
     item.expanded = !item.expanded;
   }
 

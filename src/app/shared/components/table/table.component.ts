@@ -7,7 +7,6 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 })
 
 export class TableComponent implements OnInit, OnChanges{
-
   ngOnChanges(changes: SimpleChanges): void {
     console.log(changes['tableColumns'].currentValue);
   }
